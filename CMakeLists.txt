@@ -1,11 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
-if(EXISTS "${CMAKE_BINARY_DIR}/conan_paths.cmake")
-  set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/conan_paths.cmake")
-endif()
-
 project(pong CXX)
 
+include(cmake/Cache.cmake)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
@@ -14,7 +11,6 @@ target_compile_features(project_options INTERFACE cxx_std_17)
 
 add_library(project_warnings INTERFACE)
 
-include(cmake/Cache.cmake)
 include(cmake/CompilerWarnings.cmake)
 set_project_warnings(project_warnings)
 
